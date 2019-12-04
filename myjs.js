@@ -2,11 +2,7 @@
 var userName = document.querySelector('input[name="userName"]');
 var firstName = document.querySelector('input[name="firstName"]');
 var lastName = document.querySelector('input[name="lastName"]');
-var today = new Date();
-var birthDate = new Date(document.querySelector('input[name="birthDate"]').value);
-var ageY = today.getFullYear() - birthDate.getFullYear();
-var ageM = today.getMonth() - birthDate.getMonth();
-var ageD = today.getDate() - birthDate.getDate();
+var birthDate = document.querySelector('input[name="birthDate"]');
 var userMail = document.querySelector('input[name="userMail"]');
 var password = document.querySelector('input[name="password"]');
 var repeatPassword = document.querySelector('input[name="repeatPassword"]');
@@ -15,11 +11,28 @@ var genderFemale = document.querySelector('input[value="female"]');
 var submit = document.querySelector('input[name="submit"]');
 
 
+
+
 document.forms["register"].addEventListener("submit", function(e) {
 	
 	var error;
 
-    var inputs = this;
+	var inputs = this;
+
+	//Calcul Age
+	var bD = birthDate.value;
+	var td = new Date();
+	var year = bD.substr(0,4); 
+	var month = bD.substr(5,2)-1; //-1 car le navigateur commence les jours et mois a 0
+	var day = bD.substr(8,2)-1;
+	var age = td.getFullYear()-year;	
+	var ageMonth = td.getMonth()-month; 
+	var ageDay = td.getDay()-day;
+
+	if((ageMonth < 0) || ((ageMonth == 0) && (ageDay < 0))){
+		age--;
+	}	
+		
 	// Traitement cas par cas (input unique)
 	if (userMail.value=="root@paca.happy-dev.fr" || userMail.value=="admin@paca.happy-dev.fr" || userMail.value=="dieu@paca.happy-dev.fr") {
 		error = "The mail " + userMail.value + " is already taken";
@@ -33,9 +46,9 @@ document.forms["register"].addEventListener("submit", function(e) {
         error= "The passwords don't match";
     }
 
-    if(ageY<18 || (ageY===18 && ageM<0) || (ageY===18 && ageM===0 && ageD<0)){
-        error= "18+ only!";
-    }
+	if(age<18){
+		error="18+ only";
+	}
 
 	// Traitement générique
 	for (var i = 0; i < inputs.length; i++) {
