@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel = "stylesheet" type = "text/css" href = "style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register Form JS</title>
+</head>
+<body>
+    <div id="main">
+        <h1>Sign Up</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <form action="" name="register"  method="POST">
+            <label for="userName">Username</label><span></span><br>
+            <input type="text" name="userName" placeholder="Enter an username" ><br>            
+            <label for="lastName">Last Name</label><br>
+            <input type="text" name="lastName" id="" placeholder="Enter your last name" ><br>
+            <label for="firstName">First Name</label><br>
+            <input type="text" name="firstName" id="" placeholder="Enter your first name" ><br>
+            <label for="birthDate">Birth Date</label><br>
+            <input type="date" name="birthDate" id="birthDate"><br>
+            <label for="userMail">Email</label><br>
+            <input type="email" name="userMail" id="" placeholder="Enter your email"  ><br>
+            <label for="password">Password</label><br>
+            <input type="password" name="password" id="" placeholder="Enter your password"  ><br>
+            <label for="repeatPassword">Repeat Password</label><br>
+            <input type="password" name="repeatPassword" id="" placeholder="Repeat your password" ><br>
+            <label for="gender">Gender</label><br><br>
+            <input type="radio" name="gender" id="" value="male">Male
+            <input type="radio" name="gender" id="" value="female">Female<br><br>
+            <p style="color:red;" id="error"></p><br>
+            <input type="submit" name="submit" value="Send" id="submit"><br>
+
+        </form>
+    </div>
+
+    <script type="text/javascript" src="myjs.js"></script>
+</body>
+</html>
