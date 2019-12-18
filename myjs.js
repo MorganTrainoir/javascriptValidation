@@ -22,12 +22,13 @@ document.forms["register"].addEventListener("submit", function(e) {
 	//Calcul Age
 	var bD = birthDate.value;
 	var td = new Date();
+	console.log(td);
 	var year = bD.substr(0,4); 
-	var month = bD.substr(5,2)-1; //-1 car le navigateur commence les jours et mois a 0
-	var day = bD.substr(8,2)-1;
+	var month = bD.substr(5,2)-1; //-1 car le navigateur commence les mois a 0
+	var day = bD.substr(8,2);
 	var age = td.getFullYear()-year;	
 	var ageMonth = td.getMonth()-month; 
-	var ageDay = td.getDay()-day;
+	var ageDay = td.getDate()-day;	
 
 	if((ageMonth < 0) || ((ageMonth == 0) && (ageDay < 0))){
 		age--;
